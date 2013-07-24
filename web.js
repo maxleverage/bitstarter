@@ -1,8 +1,8 @@
+var fs = require('fs');
 var express = require('express');
 var app = express();
-app.use(express.logger());
 
-var fs = require('fs');
+app.use(express.logger());
 var file_default = "index.html";
 file = file || file_default;
 var buffer = new Buffer(fs.readFileSync(file));
