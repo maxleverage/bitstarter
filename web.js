@@ -1,4 +1,3 @@
-var fs = require('fs');
 var express = express('express');
 var app = express.createServer(express.logger());
 
