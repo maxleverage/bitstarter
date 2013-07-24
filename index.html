@@ -16,22 +16,27 @@
 			p.lead {
 				padding-top: 15px;
 			}
-			.navigation, .pitch, .section, .section2, .faq, .footer {
-				padding: 10px 0px 10px 0px;
+			.navigation, .pitch, .section1, .section2, .faq, .footer {
+				padding: 10px 0 px 10px 0px;
 			}
 			.video, .thermometer, .order, .social {
 				border: 1px dotted;
-				text-align: center;
+				text-align: center:
 			}
-			.vide {
+			.video {
+				/* Internal borders have 1px width, thus need to add 4 x 1px to 120px. */
+				height: 124px;
+				line-height: 124px;
+			}
+			.thermometer, .order, .social {
 				/* line-height to vertically center: http://phrogz.net/css/vertical-align/index.html */
-				heigh: 40px;
+				height: 40px;
 				line-height: 40px;
 			}
 			div.row {
 				border: 1px solid;
 			}
-		</style?
+		</style>
 	</head>
 <body>
 	<div class="container">
@@ -51,9 +56,9 @@
 				<h1>Project Mandolin</h1>
 			</div>
 		</div>
-		<div class="row subheading>
+		<div class="row subheading">
 			<div class="span12">
-				<p class="lead">This is a bitstarter for project Mandolin.</p>
+				<p class="lead">This is the initiation of Project Mandolin.</p>
 			</div>
 		</div>
 		<div class="row pitch">
@@ -61,7 +66,7 @@
 				Video
 			</div>
 			<div class="span6">
-				<div class="thermomemter">
+				<div class="thermometer">
 					Thermometer
 				</div>
 				<div class="order">
@@ -75,12 +80,13 @@
 		<div class="row section1">
 			<div class="span12">
 				Marketing Section 1
+				</div>
 			</div>
-		</div>
-			<div class="row section2">
+		<div class="row section2">
+			<div class="span12">
 				Marketing Section 2
+				</div>
 			</div>
-		</div>
 		<div class="row faq">
 			<div class="span12">
 				FAQ
@@ -90,9 +96,8 @@
 			<div class="span12">
 				Footer
 			</div>
+			</div>
 		</div>
-	</div>
-</body>
+	</body>
 </html>
-
-
+	
