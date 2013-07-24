@@ -25,8 +25,9 @@ var fs = require('fs');
 var program = require('commander');
 var cheerio = require('cheerio');
 var HTMLFILE_DEFAULT = "index.html";
-var URL_DEFAULT = "http://glacial-waters-9592.herokuapp.com/";
 var CHECKSFILE_DEFAULT = "checks.json";
+var URL_DEFAULT = "http://glacial-waters-9592.herokuapp.com/";
+
 
 var assertFileExists = function(infile) {
     var instr = infile.toString();
