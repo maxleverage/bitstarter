@@ -24,6 +24,7 @@ References:
 var fs = require('fs');
 var program = require('commander');
 var cheerio = require('cheerio');
+var rest = require('restler');
 var HTMLFILE_DEFAULT = "index.html";
 var CHECKSFILE_DEFAULT = "checks.json";
 var URL_DEFAULT = "http://glacial-waters-9592.herokuapp.com/";
@@ -48,21 +49,22 @@ var cheerioUrl = function(url,checkfile) {
 		if (result instanceof Error) {
 			console.log('Error: ' + result.message);
 		} else {
-	checkResult(result,checkfile);
+    	checkResult(result,checkfile);
 		}
 	});
+    //return cheerio.load(result);
 };
 
 var checkResult = function(result,checksfile) {
-		$ = cheerio.lod(result);
-		var checks = loadChecks(checksfile).sort();
-	var out = {};
-	for(var ii in checks) {
-		var present = $(checks[ii]).length > 0;
-		out[checks[ii]] = present;
-	}
-	var outJson = JSON.stringify(out, null, 4);
-	console.log(outJson);
+	$ = cheerio.load(result);
+	var checks = loadChecks(checksfile).sort();
+    var out = {};
+    for(var ii in checks) {
+        var present = $(checks[ii]).length > 0;
+        out[checks[ii]] = present;
+    }
+    var outJson = JSON.stringify(out, null, 4);
+    console.log(outJson);
 }
 
 var loadChecks = function(checksfile) {
@@ -81,8 +83,9 @@ var checkHtmlFile = function(htmlfile, checksfile) {
 };
 
 var checkUrl = function(url, checksfile) {
-	cheerioUrl(url,checksfile);
+    cheerioUrl(url,checksfile);
 };
+
 
 var clone = function(fn) {
     // Workaround for commander.js issue.
@@ -92,19 +95,19 @@ var clone = function(fn) {
 
 if(require.main == module) {
     program
+        .option('-f, --file [html_file]', 'Path to index.html')
         .option('-c, --checks <check_file>', 'Path to checks.json', clone(assertFileExists), CHECKSFILE_DEFAULT)
-        .option('-f, --file <html_file>', 'Path to index.html', clone(assertFileExists), HTMLFILE_DEFAULT)
         .option('-u, --url [url]', 'url to html file')
-	.parse(process.argv);
+        .parse(process.argv);
     var checkJson = '';
     if(program.file) {
-	checkJson = checkHtmlFile(program.file, program.checks);
-	    var outJson = JSON.stringify(checkJson, null, 4);
-	    console.log(outJson);
+        checkJson = checkHtmlFile(program.file, program.checks);
+            var outJson = JSON.stringify(checkJson, null, 4);
+            console.log(outJson);
     } else if (program.url) {
-	checkUrl(program.url,program.checks);
+        checkUrl(program.url,program.checks);
     }
+
 } else {
     exports.checkHtmlFile = checkHtmlFile;
 }
-
