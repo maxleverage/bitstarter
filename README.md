@@ -1,4 +1,4 @@
-# node-js-sample
+# Project Mandolin
 
 Bitcoin crowdfunding node.js app for Project Mandolin
 
