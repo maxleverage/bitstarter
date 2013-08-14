@@ -434,9 +434,23 @@
 			<div class="row-fluid">
 				<div class="span6 offset3 funder">
 				<p>Project Mandolin is still in early experimentation with the crowd-funding model for intervention</p>
+				<!-- Bitcoin Payments -->
 				<a class="coinbase-button" data-code="43313525e2039b79d4ba682357369c16" data-button-style="custom_small" href="https://coinbase.com/checkouts/43313525e2039b79d4ba682357369c16">Pay With Bitcoin</a>
 				<script src="https://coinbase.com/assets/button.js" type="text/javascript"></script>
 				
+				<!-- Stripe Payments -->
+				<form action="" method="POST">
+					<script
+						src="https://checkout.stripe.com/v2/checkout.js" class="stripe-button"
+						data-key="pk_live_32F3r9v7ubHt20BoMeh4jWqq"
+						data-amount="10000"
+						data-name="Intervention Force"
+						data-description="Contribute $100.00"
+						data-image="/128x128.png">
+					</script>
+				</form>
+
+				<!-- Social Buttons -->
 				<div class="row-fluid">
 				<div class="span6 social">
 					<!-- AddThis Button BEGIN -->
